@@ -7,7 +7,10 @@ export const site = {
   description:
     "A superfood truck in Perth serving vegan and vegetarian Indian street food — sev usal, misal pav, kachori and chaat, made from organic produce.",
   contactName: "Kirtan Suthar",
-  email: "hello@veggiemate.com.au",
+  // PLACEHOLDER: Kirtan's personal inbox, used temporarily for launch so
+  // pre-orders and customer emails go somewhere real. Swap for a proper
+  // business inbox (e.g. hello@veggiematefoodtruck.au) once one exists.
+  email: "sutharkirtan1994@gmail.com",
   phone: "+61466987232",
   phoneDisplay: "0466 987 232",
   instagram: "https://instagram.com/veggiemate",
