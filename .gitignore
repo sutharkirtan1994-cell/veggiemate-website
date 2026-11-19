@@ -1,0 +1,24 @@
+# Next.js
+/.next/
+/out/
+
+# Dependencies
+/node_modules/
+
+# Env files — never commit real secrets. .env.local.example is the template
+# that IS committed; everything else here holds real keys and stays local.
+.env
+.env*.local
+
+# Build / misc
+/build
+*.tsbuildinfo
+.DS_Store
+npm-debug.log*
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+
+# Local Claude Code tool-permission settings — machine-specific, not project config.
+.claude/

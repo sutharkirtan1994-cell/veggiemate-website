@@ -1,0 +1,276 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Veggie Mate Superfood — design tokens
+   "Where organic meets authentic"
+
+   Lush green, black and gold, taken from the truck wrap and the brand
+   roundel rather than invented. Dark acts sit on a green-black, not a warm
+   black, so the site and the truck read as one business.
+
+   TWO-ACT SYSTEM
+   The site alternates between light acts (menu, nutrition, ordering — where
+   text works hard) and dark cinematic acts (hero, story, video). Wrapping any
+   element in `.act-dark` re-binds the whole semantic token set beneath it, so
+   components only ever write `bg-background` / `text-foreground` / `text-gold`
+   and are correct in both acts automatically.
+
+   Every pair below is measured, not assumed. See design-system/veggiemate/.
+   ========================================================================== */
+
+:root {
+  --radius: 0.25rem; /* restrained — premium reads sharper than rounded */
+
+  /* --- Light act: warm cream, ink-green text ------------------------- */
+  --background: #f7f1e1; /* cream, taken from the brand roundel ground */
+  --foreground: #0b1f14; /* ink — green-black, 15.26:1 */
+  --card: #ffffff;
+  --card-foreground: #0b1f14;
+  --muted: #eee6d2;
+  --muted-foreground: #55635a; /* 5.61 on cream · 5.09 on muted */
+  --primary: #0b1f14;
+  --primary-foreground: #f7f1e1;
+
+  /* Gold — the conversion colour. Deeper than the brand gold because the
+     brand value (#c87f1f) is only 2.86:1 on cream and fails outright. */
+  --gold: #8f5606; /* 5.32 cream · 4.82 muted · white-on 6.00 */
+  --gold-foreground: #ffffff;
+
+  /* Herb + chilli, from the truck wrap and the spice ramp. */
+  --herb: #3f6b34; /* 5.54 · 5.02 */
+  --chilli: #a83522; /* 5.82 · 5.28 */
+
+  /* --border is decorative (rules, card edges) and exempt from 1.4.11.
+     --input is a control boundary and is NOT exempt. Do not merge them. */
+  --border: #ddd4bd;
+  --input: #7f7d70; /* 3.67 cream · 3.33 muted */
+  --ring: #8f5606;
+  --destructive: #a83522;
+  --destructive-foreground: #ffffff;
+
+  /* Spice ramp reads green → gold → red, which is legible as a heat scale
+     even before the icon and word are read. */
+  --spice-1: #3f6b34;
+  --spice-2: #8f5606;
+  --spice-3: #a83522;
+
+  /* --- Motion ---------------------------------------------------------- */
+  /* Slow and expensive-feeling. The DB names "fast animations" as the
+     anti-pattern for this style, so nothing here runs at the usual 200ms. */
+  --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 240ms;
+  --dur-base: 420ms;
+  --dur-slow: 680ms;
+
+  /* --- Elevation — soft, warm-tinted, never hard-edged ----------------- */
+  --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.05);
+  --shadow-md: 0 6px 20px rgba(28, 25, 23, 0.07);
+  --shadow-lg: 0 18px 46px rgba(28, 25, 23, 0.1);
+}
+
+/* --- Dark act ---------------------------------------------------------- */
+.act-dark {
+  /* Green-black, not warm black — ties the cinematic acts to the truck wrap. */
+  --background: #0a1710;
+  --foreground: #f7f1e1; /* 16.29:1 */
+  --card: #111d16;
+  --card-foreground: #f7f1e1;
+  --muted: #16241c;
+  --muted-foreground: #a9b5a6; /* 8.62:1 */
+  --primary: #f7f1e1;
+  --primary-foreground: #0a1710;
+
+  /* The light-act gold is far too dark here. Dark acts get the brand gold. */
+  --gold: #e8a93d; /* 8.90:1 · dark text on it 8.90:1 */
+  --gold-foreground: #0a1710;
+
+  --herb: #96c47f; /* 9.19:1 */
+  --chilli: #e9705a; /* 6.06:1 */
+
+  --border: #2a3a30;
+  --input: #667a6a; /* 3.99 bg · 3.76 card · 3.50 muted */
+  --ring: #e8a93d;
+  --destructive: #e9705a;
+  --destructive-foreground: #0a1710;
+
+  --spice-1: #96c47f;
+  --spice-2: #e8a93d;
+  --spice-3: #e9705a;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 18px 46px rgba(0, 0, 0, 0.6);
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-herb: var(--herb);
+  --color-chilli: var(--chilli);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-spice-1: var(--spice-1);
+  --color-spice-2: var(--spice-2);
+  --color-spice-3: var(--spice-3);
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-outfit);
+
+  --radius-sm: var(--radius);
+  --radius-md: calc(var(--radius) * 2);
+  --radius-lg: calc(var(--radius) * 4);
+
+  --ease-lux: var(--ease-lux);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: 1rem; /* 16px floor */
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), ui-serif, Georgia, serif;
+    font-weight: 400;
+    text-wrap: balance;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Sticky header is 5rem; keep anchor targets clear of it. */
+  [id] {
+    scroll-margin-top: 7rem;
+  }
+
+  /* Never remove a focus ring without replacing it. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--gold);
+    color: var(--gold-foreground);
+  }
+}
+
+@layer components {
+  /* Eyebrow / section marker — the only permitted sub-14px text.
+     Outfit, because it echoes the geometric sans on the truck wordmark.
+     Always at --muted-foreground or --gold. */
+  .eyebrow {
+    font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  .display-1 {
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+
+  .display-2 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  .display-3 {
+    font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+    line-height: 1.25;
+  }
+
+  .lede {
+    font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    line-height: 1.6;
+  }
+
+  /* Long-form measure. Full-bleed paragraphs at 1440px are unreadable. */
+  .prose-measure {
+    max-width: 68ch;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .shell {
+      padding-inline: 3.5rem;
+    }
+  }
+
+  /* A hairline that survives both acts. */
+  .rule {
+    height: 1px;
+    background: var(--border);
+    opacity: 0.6;
+  }
+}
+
+@layer utilities {
+  /* Reveal targets start visible. GSAP hides them only inside a
+     matchMedia("no-preference") block, so reduced-motion visitors, no-JS
+     visitors, and crawlers all get fully rendered content. */
+  .will-reveal {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
