@@ -88,5 +88,6 @@ export const ALL_SLOTS = [...new Set(pitches.flatMap((p) => p.slots))].sort();
 export const nav = [
   { href: "/menu", label: "Menu" },
   { href: "/story", label: "Story" },
+  { href: "/introduction", label: "Introduction" },
   { href: "/#find-us", label: "Find us" },
 ] as const;
