@@ -1,7 +1,7 @@
 export const site = {
   name: "Veggie Mate",
   fullName: "Veggie Mate Superfood",
-  slogan: "Where organic meets authentic",
+  slogan: "Crafted with Care and Spice",
   city: "Perth",
   region: "Western Australia",
   description:
