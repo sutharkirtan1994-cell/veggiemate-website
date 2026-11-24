@@ -22,7 +22,7 @@ const PRINCIPLES = [
   {
     n: "01",
     title: "Organic, or we do not buy it",
-    body: "Vegetables come from two growers within forty miles. Spices come whole from a single importer and are ground on the truck each morning, because pre-ground masala is where flavour goes to die. If a supplier cannot tell us how something was grown, we do not put it on the board.",
+    body: "We source our fresh vegetables from local Western Australian growers and trusted vendors to ensure freshness and quality. Our spices are carefully sourced from genuine overseas vendors to preserve authentic flavours and are stone-ground to maintain their traditional aroma and taste. We cook exclusively using stainless steel and cast iron utensils, avoiding aluminium and non-stick cookware to support healthier, more natural cooking.",
   },
   {
     n: "02",
@@ -92,31 +92,39 @@ export default function StoryPage() {
         </div>
       </section>
 
-      {/* ---------- The truck ---------- */}
+      {/* ---------- Who's cooking ---------- */}
       <section className="border-y border-[var(--border)] bg-[var(--muted)]">
         <div className="shell py-24 md:py-32">
           <Reveal className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
             <Plate
               image={{
-                src: "/truck/truck.jpg",
-                alt: "The Veggie Mate truck parked at dusk with its hatch open and the service light on.",
+                src: "/team/founders-cutout.png",
+                alt: "Kirtan and Dhruvika, the two people behind Veggie Mate, in chef's whites.",
               }}
-              label="The truck"
-              ratio="landscape"
+              label="Kirtan and Dhruvika"
+              ratio="portrait"
               sizes="(min-width: 1024px) 45vw, 100vw"
+              className="bg-transparent"
             />
             <div>
-              <Eyebrow>The truck</Eyebrow>
+              <Eyebrow>Who&apos;s cooking</Eyebrow>
               <h2 className="display-2 mt-5">
-                A small kitchen with nowhere to hide.
+                Two people, one kitchen, no excuses.
               </h2>
               <p className="prose-measure mt-7 text-lg leading-relaxed text-muted-foreground">
-                Everything happens in about four square metres, in front of
-                whoever is waiting. There is no back of house to send a mistake
-                to. You can watch the sev go on, watch the kat get poured, and
-                see exactly how much chilli went in before you commit. We rather
-                like that. It keeps us honest in a way a restaurant kitchen
-                never has to be.
+                Veggie Mate is run by the two of us. We started this because
+                we were tired of vegetarian food being treated as the
+                compromise option — pale, apologetic, assembled from whatever
+                was left once the meat went out. That is not what we grew up
+                eating, and it is not what we set out to sell.
+              </p>
+              <p className="prose-measure mt-5 text-lg leading-relaxed text-muted-foreground">
+                Every dish on this menu is something we have cooked at home for
+                years, made from vegetables and spices we choose ourselves, not
+                whatever is convenient. If it takes longer to do it properly, we
+                take longer. If you have ever wondered whether vegetarian food
+                can actually be exciting, we are standing right there at the
+                hatch, ready to prove it.
               </p>
             </div>
           </Reveal>
