@@ -66,7 +66,12 @@ const FILMS: DishFilm[] = [
     slug: "jhal-muri",
     name: "Jhal Muri",
     origin: "West Bengal, India",
-    image: "/dishes/jhal-muri.jpg",
+    video: {
+      src: "/video/jhal-muri-introduction.mp4",
+      poster: "/dishes/jhal-muri.jpg",
+      captions: "/captions/jhal-muri-introduction.vtt",
+      label: "Jhal Muri — introduction",
+    },
     description: [
       "Jhal Muri is one of Bengal's most iconic street foods — crunchy, spicy, tangy and refreshing all at once. It traces back to Kolkata, in West Bengal, growing out of Bengal's long street-food tradition, and found its moment during the Second World War, when migrant workers from Bihar helped carry it onto the streets of Kolkata.",
       "The secret is in its ingredients: crispy puffed rice, roasted peanuts, fresh onion, tomato, cucumber, boiled potato, green chilli, coriander, a squeeze of lemon and a few drops of mustard oil, tossed together with traditional spices and a crunchy savoury mix.",
