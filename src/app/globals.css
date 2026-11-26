@@ -19,6 +19,12 @@
    ========================================================================== */
 
 :root {
+  /* No dark-mode toggle on this site — without this, a phone set to system
+     dark mode renders native <select> dropdown lists with dark-theme text
+     and background that clash with this always-light page, making the
+     options unreadable. */
+  color-scheme: light;
+
   --radius: 0.25rem; /* restrained — premium reads sharper than rounded */
 
   /* --- Light act: warm cream, ink-green text ------------------------- */

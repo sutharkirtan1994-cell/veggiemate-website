@@ -41,6 +41,23 @@ const FILMS: DishFilm[] = [
       "One dish, countless flavours, and a little taste of Gujarat in every bite.",
     ],
   },
+  {
+    slug: "ragda-pattice",
+    name: "Ragda Pattice",
+    origin: "Maharashtra, India",
+    video: {
+      src: "/video/ragda-pattice-introduction.mp4",
+      poster: "/dishes/ragda-pattice.jpg",
+      captions: "/captions/ragda-pattice-introduction.vtt",
+      label: "Ragda Pattice — introduction",
+    },
+    description: [
+      "Ragda Pattice comes from Mumbai, in the state of Maharashtra, on India's western coast. It grew up as part of Mumbai's street-food culture through the twentieth century, and while nobody can say for certain who first put ragda and pattice on the same plate, it has gone on to become one of India's best-loved vegetarian snacks.",
+      "At its base is ragda — white peas simmered in Indian spices for plant-based protein, fibre and iron — paired with pattice, golden potato patties that bring carbohydrates and energy to the plate. Finished with fresh onions, coriander, mint chutney, sweet tamarind chutney and a scattering of crunchy sev, the whole dish brings together protein, fibre, vitamins and energy in one bowl.",
+      "Ragda Pattice is loved for its perfect balance of spicy, sweet, tangy and crunchy flavours. It is affordable, filling and satisfying — the combination of hot ragda, crispy potato patties and fresh chutneys makes it a favourite street food for people of all ages.",
+      "More than just a snack, Ragda Pattice represents the rich tradition of Indian vegetarian street food.",
+    ],
+  },
 ];
 
 export default function IntroductionPage() {
