@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Pin } from "@/components/icons";
+import { Plate } from "@/components/media/plate";
 import { VideoPlayer } from "@/components/media/video-player";
 import { Eyebrow } from "@/components/ui/badges";
 import { Reveal } from "@/components/motion/reveal";
@@ -14,7 +15,10 @@ interface DishFilm {
   slug: string;
   name: string;
   origin: string;
-  video: DishVideo;
+  /** Once a real video is ready, add it here — the layout switches over on its own. */
+  video?: DishVideo;
+  /** Shown instead of the video while there isn't one yet. */
+  image?: string;
   description: string[];
 }
 
@@ -58,6 +62,19 @@ const FILMS: DishFilm[] = [
       "More than just a snack, Ragda Pattice represents the rich tradition of Indian vegetarian street food.",
     ],
   },
+  {
+    slug: "jhal-muri",
+    name: "Jhal Muri",
+    origin: "West Bengal, India",
+    image: "/dishes/jhal-muri.jpg",
+    description: [
+      "Jhal Muri is one of Bengal's most iconic street foods — crunchy, spicy, tangy and refreshing all at once. It traces back to Kolkata, in West Bengal, growing out of Bengal's long street-food tradition, and found its moment during the Second World War, when migrant workers from Bihar helped carry it onto the streets of Kolkata.",
+      "The secret is in its ingredients: crispy puffed rice, roasted peanuts, fresh onion, tomato, cucumber, boiled potato, green chilli, coriander, a squeeze of lemon and a few drops of mustard oil, tossed together with traditional spices and a crunchy savoury mix.",
+      "It holds its own nutritionally too — puffed rice for carbohydrate energy, peanuts for plant protein and healthy fats, fresh vegetables for fibre, vitamins and minerals.",
+      "People love it because it is affordable, made fresh on the spot, light, and packed with flavour — every handful bringing crunch, freshness, spice and a sharp tangy kick.",
+      "Jhal Muri is more than a snack. It is the taste of Kolkata's streets, in every crunchy handful.",
+    ],
+  },
 ];
 
 export default function IntroductionPage() {
@@ -75,7 +92,16 @@ export default function IntroductionPage() {
             key={film.slug}
             className="grid items-start gap-14 lg:grid-cols-2 lg:gap-20"
           >
-            <VideoPlayer video={film.video} />
+            {film.video ? (
+              <VideoPlayer video={film.video} />
+            ) : (
+              <Plate
+                image={{ src: film.image ?? "", alt: `${film.name}, ready to eat.` }}
+                label={film.name}
+                ratio="cinema"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+              />
+            )}
             <div>
               <div className="flex items-center gap-2 text-gold">
                 <Pin size={18} />
