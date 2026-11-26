@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Close, Menu } from "@/components/icons";
 import { ButtonLink } from "@/components/ui/button";
 import { nav, site } from "@/lib/site";
@@ -123,54 +124,56 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {open && (
-        <div className="fixed inset-0 z-50 md:hidden">
-          <button
-            type="button"
-            aria-label="Close menu"
-            onClick={close}
-            className="absolute inset-0 h-full w-full cursor-pointer bg-black/55 backdrop-blur-sm"
-          />
-          <div
-            id="mobile-nav"
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Main menu"
-            className="act-dark absolute inset-y-0 right-0 flex w-[min(22rem,88vw)] flex-col gap-2 p-6 shadow-[var(--shadow-lg)]"
-          >
-            <div className="mb-6 flex items-center justify-between">
-              <span className="eyebrow text-gold">Menu</span>
-              <button
-                type="button"
-                onClick={close}
-                aria-label="Close menu"
-                className="-mr-2 inline-flex h-12 w-12 cursor-pointer items-center justify-center text-foreground transition-colors duration-200 hover:text-gold"
-              >
-                <Close size={24} />
-              </button>
+      {open &&
+        createPortal(
+          <div className="fixed inset-0 z-50 md:hidden">
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={close}
+              className="absolute inset-0 h-full w-full cursor-pointer bg-black/55 backdrop-blur-sm"
+            />
+            <div
+              id="mobile-nav"
+              ref={panelRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Main menu"
+              className="act-dark absolute inset-y-0 right-0 flex w-[min(22rem,88vw)] flex-col gap-2 p-6 shadow-[var(--shadow-lg)]"
+            >
+              <div className="mb-6 flex items-center justify-between">
+                <span className="eyebrow text-gold">Menu</span>
+                <button
+                  type="button"
+                  onClick={close}
+                  aria-label="Close menu"
+                  className="-mr-2 inline-flex h-12 w-12 cursor-pointer items-center justify-center text-foreground transition-colors duration-200 hover:text-gold"
+                >
+                  <Close size={24} />
+                </button>
+              </div>
+
+              {nav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="border-b border-[var(--border)] py-4 font-display text-2xl text-foreground transition-colors duration-200 hover:text-gold"
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              <ButtonLink href="/order" variant="gold" size="lg" className="mt-8">
+                Pre-order
+              </ButtonLink>
+
+              <p className="mt-auto text-sm text-muted-foreground">
+                {site.slogan}
+              </p>
             </div>
-
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="border-b border-[var(--border)] py-4 font-display text-2xl text-foreground transition-colors duration-200 hover:text-gold"
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            <ButtonLink href="/order" variant="gold" size="lg" className="mt-8">
-              Pre-order
-            </ButtonLink>
-
-            <p className="mt-auto text-sm text-muted-foreground">
-              {site.slogan}
-            </p>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </header>
   );
 }
